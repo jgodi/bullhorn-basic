@@ -1,0 +1,7 @@
+
+<novo-dynamic-form [autoFocusFirstField]="true" class="dynamic" [fieldsets]="dynamic" [(form)]="dynamicForm" #myform></novo-dynamic-form>
+<footer class="dynamic-demo-footer">
+    <button [disabled]="!myform.isValid" (click)="redirectToTableRoute(myform)" theme="primary" icon="check">Save</button>
+    <button [disabled]="!myform.isValid"  theme="secondary" icon="check">Clear</button>
+</footer>
+<!-- <div class="final-value">Valid: {{myform.isValid | json}}</div> -->

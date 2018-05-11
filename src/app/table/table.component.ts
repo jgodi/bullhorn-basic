@@ -4,28 +4,24 @@ import { Router } from '@angular/router';
 interface MockData {
   id: number;
   embeddedObj: { id: number; test: string; another: { id: number } };
-  Type: { id: number };
+  billType: { id: number };
   title: string;
   status: string;
   enabled: boolean;
-  Description: number;
-  Code: string;
-  RateType: string;
+  description: number;
+  code: string;
+  rateType: string;
   address: { city?: string; state?: string };
 }
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
 })
 
-export class AppComponent {
+export class TableComponent {
 
-  getCurrentStateUrl() : string {
-    // console.log(this.router.url);
-    
-    return this.router.url;
-  }
+
   public basicRows;
   public sharedColumns;
   public log(event: { originalEvent: MouseEvent; row: MockData }): void {
@@ -42,56 +38,60 @@ export class AppComponent {
 
   public sharedDisplayColumns = [
     'title',
-    'Code',
-    'RateType',
-    'Type',
+    'code',
+    'rateType',
+    'billType',
     'status',
-    'Description'
+    'description'
   ];
-  constructor(private ref: ChangeDetectorRef,private router: Router) {
+  public goToRoute(): void {
+    this.router.navigateByUrl('/form');
+  };
+  constructor(private ref: ChangeDetectorRef , private router: Router) {
     this.basicRows = [];
     this.sharedColumns = [];
     for (let i = 0; i < 20; i++) {
       let day = 5;
       this.basicRows.push({
-        Type: 'Pay/Bill' ,
+        billType: 'Pay/Bill' ,
         title: 'weekday - Day shift',
         status: 'Active',
-        Description: 'Standard hourly day shift rate',
-        Code: 'NAS' + i,
-        RateType: 'Hours',
+        description: 'Standard hourly day shift rate',
+        code: 'NAS' + i,
+        rateType: 'Hours',
       });
       if(i%4 === 0){
         this.basicRows.push({
-          Type: 'Pay' ,
+          billType: 'Pay' ,
           title: 'Expense - Mileage',
           status: 'Active',
-          Description: 'Mileage expense, time based',
-          Code: 'NAS' + (i+20),
-          RateType: 'Hours',
+          description: 'Mileage expense, time based',
+          code: 'NAS' + (i+20),
+          rateType: 'Hours',
         });        
       }
     }
 
   this.sharedColumns = [
     {
-      id: 'Code',
+      id: 'code',
       label: 'Code',
       type: 'text'
     },
     {
-      id: 'RateType',
+      id: 'rateType',
       label: 'Rate Type',
+      type : 'text'
 
     },
     {
-      id: 'Type',
+      id: 'billType',
       label: 'Type',
       enabled: true,
       type: 'text',
     },
     {
-      id: 'Description',
+      id: 'description',
       label: 'Description',
       enabled: true,
       type: 'text',
@@ -100,10 +100,10 @@ export class AppComponent {
       id: 'title',
       label: 'title',
       enabled: true,
-      type: 'link:mailto',
-      attributes: {
-        target: '_blank',
-      },
+      type: 'link',
+      handlers: {
+        click: this.goToRoute.bind(this),
+      }
     },
     {
       id: 'status',

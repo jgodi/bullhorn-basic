@@ -1,0 +1,15 @@
+<div class="container">
+<novo-dynamic-form [autoFocusFirstField]="true" class="dynamic" [fieldsets]="dynamic" [(form)]="dynamicForm" #myform></novo-dynamic-form>
+<footer class="dynamic-demo-footer">
+    <button [disabled]="!myform.isValid" (click)="addOrEditJobCode(myform)" theme="primary" icon="check">Save</button>
+    <button [disabled]="!myform.isValid"  theme="secondary" icon="check">Clear</button>
+    <button *ngIf="editMode"  (click) = "showWarning()" theme="primary" color="negative" icon="times">Delete</button>
+</footer>
+
+<!-- <app-delete-modal>  </app-delete-modal> -->
+</div>
+
+
+
+<!-- <div class="final-value">Valid: {{myform | json}}</div> -->
+<!-- <div class="final-value">jobCode: {{jobCode | json}}</div> -->
