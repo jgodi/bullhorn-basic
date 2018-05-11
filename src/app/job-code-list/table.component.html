@@ -1,0 +1,22 @@
+<div class="grayBg full-screen" *ngIf="isLoading">
+    <novo-spinner></novo-spinner>
+</div>
+<div [style.display]="isLoading ? 'none' : 'block'">
+  <div class="flex-row justify-between align-center">
+    <h3>Job Codes</h3>
+    <button theme="primary" icon="add" (click)="onAdd()">New Job Code</button>
+  </div>
+  <novo-data-table [rows]="basicRows"
+                   [columns]="sharedColumns"
+                   [hideGlobalSearch]="true"
+                   [displayedColumns]="sharedDisplayColumns"
+                   [paginationOptions]="sharedPaginationOptions"
+                   name="jobCodes"
+                  >
+    <ng-template novoTemplate="title"
+                 let-row
+                 let-col="col">
+      <a [routerLink]="['/job-code', row.id]">{{row.title}}</a>
+    </ng-template>
+  </novo-data-table>
+</div>

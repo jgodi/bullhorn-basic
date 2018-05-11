@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
+import { NovoModalService } from "novo-elements";
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(private viewContainerRef: ViewContainerRef, modalService: NovoModalService) {
+    modalService.parentViewContainer = viewContainerRef;
+  }
 }

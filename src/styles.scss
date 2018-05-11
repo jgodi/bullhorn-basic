@@ -1,2 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 @import "novo-elements";
+
+.wrapper {
+  padding: 2em;
+}
+
+.full-screen {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grayBg {
+  background: #D9DADC;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.ml {
+  margin-left: 8px;
+}
+
+.mt {
+  margin-top: 8px;
+}
+
+.width-50 {
+  width: 50%;
+}

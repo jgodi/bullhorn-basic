@@ -1,0 +1,15 @@
+<div class="width-50">
+  <novo-card [title]="(isEditingMode ? 'Edit' : 'Add') + ' Job Code'" [loading]="isLoading">
+    <novo-dynamic-form [autoFocusFirstField]="true"
+               class="dynamic"
+               [fieldsets]="jobCodeForm"
+               [(form)]="jobCodeFormFieldSet"
+               #form>
+    </novo-dynamic-form>
+    <div class="flex-row justify-end mt">
+      <button theme="primary" icon="delete" (click)="onDelete()" color="negative" *ngIf="isEditingMode">Delete</button>
+      <button theme="standard" (click)="onCancel()" class="ml">Cancel</button>
+      <button theme="primary" icon="check" (click)="onSave()" [disabled]="jobCodeFormFieldSet.invalid" class="ml">Save</button>
+    </div>
+  </novo-card>
+</div>

@@ -1,0 +1,17 @@
+<novo-card [title]="'Hours Worked'"
+           [loading]="loading"
+           icon="rate"
+           >
+  <novo-card-actions>
+    <button theme="icon" icon="configure-o" (click)="onConfigure()"></button>
+    <button theme="icon" icon="delete-o" (click)="onDelete()"></button>
+  </novo-card-actions>
+  <novo-data-table [rows]="hoursWorkedRows"
+                   [columns]="hoursWorkedColumns"
+                   [hideGlobalSearch]="true"
+                   [displayedColumns]="hoursWorkedDisplayColumns"
+                   [paginationOptions]="hoursWorkedPaginationOptions"
+                   name="hours-worked"
+                >
+  </novo-data-table>
+</novo-card>
